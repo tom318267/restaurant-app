@@ -20,7 +20,6 @@ const AddRestaurant = () => {
       setName("");
       setLocation("");
       setPriceRange("Price Range");
-      window.location = "/";
     } catch (err) {
       console.error(err.message);
     }

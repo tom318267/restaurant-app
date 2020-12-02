@@ -2,6 +2,7 @@ import React, { useContext, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import RestaurantFinder from "../../apis/RestaurantFinder";
 import { RestaurantsContext } from "../../context/RestaurantsContext";
+import StarRating from "../StarRating/StarRating";
 
 const RestaurantList = () => {
   const { restaurants, setRestaurants } = useContext(RestaurantsContext);
@@ -10,6 +11,7 @@ const RestaurantList = () => {
     const fetchData = async () => {
       try {
         const res = await RestaurantFinder.get("/");
+        console.log(res.data.data);
         setRestaurants(res.data.data.restaurants);
       } catch (err) {
         console.error(err.message);
@@ -37,6 +39,18 @@ const RestaurantList = () => {
     history.push(`/restaurants/${id}`);
   };
 
+  const renderRating = (restaurant) => {
+    if (!restaurant.count) {
+      return <span className="text-warning">0 reviews</span>;
+    }
+    return (
+      <div style={{ display: "inline-flex" }}>
+        <StarRating rating={restaurant.id} />
+        <span className="text-warning ml-1">({restaurant.count})</span>
+      </div>
+    );
+  };
+
   return (
     <div className="RestaurantList">
       <table className="table table-dark">
@@ -61,7 +75,7 @@ const RestaurantList = () => {
                 <td>{restaurant.name}</td>
                 <td>{restaurant.location}</td>
                 <td>{"$".repeat(restaurant.price_range)}</td>
-                <td>reviews</td>
+                <td>{renderRating(restaurant)}</td>
                 <td>
                   <button
                     onClick={(e) => handleUpdate(e, restaurant.id)}
