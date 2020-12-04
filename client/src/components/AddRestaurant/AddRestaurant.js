@@ -1,6 +1,7 @@
 import React, { useContext, useState } from "react";
 import RestaurantFinder from "../../apis/RestaurantFinder";
 import { RestaurantsContext } from "../../context/RestaurantsContext";
+import "./AddRestaurant.scss";
 
 const AddRestaurant = () => {
   const { addRestaurants } = useContext(RestaurantsContext);

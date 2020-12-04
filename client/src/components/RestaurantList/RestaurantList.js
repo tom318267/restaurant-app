@@ -2,7 +2,9 @@ import React, { useContext, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import RestaurantFinder from "../../apis/RestaurantFinder";
 import { RestaurantsContext } from "../../context/RestaurantsContext";
+import AddRestaurant from "../AddRestaurant/AddRestaurant";
 import StarRating from "../StarRating/StarRating";
+import "./RestaurantList.scss";
 
 const RestaurantList = () => {
   const { restaurants, setRestaurants } = useContext(RestaurantsContext);
@@ -53,6 +55,7 @@ const RestaurantList = () => {
 
   return (
     <div className="RestaurantList">
+      <AddRestaurant />
       <table className="table table-dark">
         <thead>
           <tr>
