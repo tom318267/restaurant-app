@@ -5,6 +5,7 @@ import { RestaurantsContext } from "../../context/RestaurantsContext";
 import AddReview from "../AddReview/AddReview";
 import Reviews from "../Reviews/Reviews";
 import StarRating from "../StarRating/StarRating";
+import "./RestaurantDetailsPage.scss";
 
 const RestaurantDetailsPage = () => {
   const { id } = useParams();
@@ -38,7 +39,7 @@ const RestaurantDetailsPage = () => {
                 : "(0)"}
             </span>
           </div>
-          <div className="mt-3">
+          <div className="Reviews-container mt-3">
             <Reviews reviews={selectedRestaurant.reviews} />
           </div>
           <AddReview />

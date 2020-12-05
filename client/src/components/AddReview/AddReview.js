@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useLocation, useParams } from "react-router-dom";
 import RestaurantFinder from "../../apis/RestaurantFinder";
+import "./AddReview.scss";
 
 const AddReview = () => {
   const { id } = useParams();
@@ -24,7 +25,7 @@ const AddReview = () => {
   };
 
   return (
-    <div className="mb-2">
+    <div className="AddReview mb-2">
       <form action="">
         <div className="form-row">
           <div className="form-group col-8">
